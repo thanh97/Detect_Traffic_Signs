@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Model Demo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="jumbotron-narrow.css" rel="stylesheet"> -->
+    <link href="{{ url_for('static',filename='styles/dashboard.css') }}" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- <script src="../../assets/js/ie-emulation-modes-warning.js"></script> -->
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+   
+  </head>
+
+  <body style="border: 2px solid black;
+    padding: 25px;
+    background: url(static/bg3.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
+">
+
+<br>
+<br>
+<h1 style="text-align:center;color:white"> Demo AI Application </h1>
+<h2 style="text-align:center;color:white"> Predict Traffic Images</h2>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">German Traffic Light Prediction</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/"> S W </a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="/">Model Demo<span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div>
+
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+
+
+       <fieldset>
+       <br>
+       <br>
+
+  
+  {% if reply %}
+
+  <h3> Given input traffic sign: </h3>
+
+  <br>
+  <br>
+
+     <img src = "{{ inputTrafficSign }}" alt = "Given Image" height="100"
+                                                             width="100">
+     <br>
+     <br>
+     <br>
+
+      <textarea class="form-control" name="prediction" 
+          rows="1" id="predict1" placeholder=> {{ reply }}
+      </textarea>
+
+  {% else %}
+
+    <div style="color: #000000;background: white;width: 25%; padding: 20px;">
+
+        <form action="/api/v1" method="POST" enctype="multipart/form-data" >
+      Select the image:
+
+        <span class="lnr lnr-upload"></span>
+                <input type="file" class="form-control" name="image" multiple="">
+        <br>
+          <input type="submit" value="predict" style="color:blue">
+        </form>
+
+     </div>
+
+  {% endif %}
+
+
+       </fieldset>
+   </form>
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
+  
+  
+  </body>
+</html>
+
