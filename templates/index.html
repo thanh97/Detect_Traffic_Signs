@@ -44,7 +44,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-   
+
   </head>
 
   <body style="border: 2px solid black;
@@ -63,7 +63,7 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-               
+
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -89,13 +89,14 @@
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-
+  <form name='inputImage' action="/api/v1" method="POST"
+      enctype="multipart/form-data">
 
        <fieldset>
        <br>
        <br>
 
-  
+
   {% if reply %}
 
   <h3> Given input traffic sign: </h3>
@@ -109,7 +110,7 @@
      <br>
      <br>
 
-      <textarea class="form-control" name="prediction" 
+      <textarea class="form-control" name="prediction"
           rows="1" id="predict1" placeholder=> {{ reply }}
       </textarea>
 
@@ -117,14 +118,12 @@
 
     <div style="color: #000000;background: white;width: 25%; padding: 20px;">
 
-        <form action="/api/v1" method="POST" enctype="multipart/form-data" >
-      Select the image:
 
-        <span class="lnr lnr-upload"></span>
-                <input type="file" class="form-control" name="image" multiple="">
+      Select the image:
+        <br>
+          <input type="file" name="pic" id="picture" accept="image/*" style="width:100%">
         <br>
           <input type="submit" value="predict" style="color:blue">
-        </form>
 
      </div>
 
@@ -143,8 +142,8 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <!-- <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script> -->
-  
-  
+
+
   </body>
 </html>
 
